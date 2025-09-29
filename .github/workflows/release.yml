@@ -1,0 +1,76 @@
+name: Build and Release Contracts
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate contracts data
+        run: npm run build
+
+      - name: Run tests
+        run: npm test
+
+      - name: Check if contracts.json exists
+        run: |
+          if [ ! -f contracts.json ]; then
+            echo "Error: contracts.json file not found"
+            exit 1
+          fi
+          echo "contracts.json file exists and is ready for release"
+          ls -la contracts.json
+
+      - name: Get current date
+        id: date
+        run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+
+      - name: Generate version tag
+        id: version
+        run: |
+          # Generate version based on date and commit hash
+          SHORT_SHA=$(echo $GITHUB_SHA | cut -c1-7)
+          VERSION="v${{ steps.date.outputs.date }}-${SHORT_SHA}"
+          echo "version=${VERSION}" >> $GITHUB_OUTPUT
+          echo "Generated version: ${VERSION}"
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ steps.version.outputs.version }}
+          name: Energy Contracts Data ${{ steps.version.outputs.version }}
+          body: |
+            ## Energy Contracts Data Release
+
+            **Generated on:** ${{ steps.date.outputs.date }}
+            **Commit:** ${{ github.sha }}
+
+            This release contains the processed energy contract pricing data in JSON format.
+          files: |
+            contracts.json
+          draft: false
+          prerelease: false
+
+      - name: Summary
+        run: |
+          echo "✅ Release created successfully!"
+          echo "🏷️  Tag: ${{ steps.version.outputs.version }}"
+          echo "📄 Asset: contracts.json uploaded"
+          echo "🔗 Check the releases page for the download link"
