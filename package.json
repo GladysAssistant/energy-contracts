@@ -1,0 +1,12 @@
+{
+  "name": "gladys-energy-contracts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "process.js",
+  "scripts": {
+    "test": "node process.test.js",
+    "build": "node process.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
