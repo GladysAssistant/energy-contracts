@@ -11,44 +11,58 @@ const { execSync } = require("child_process");
 function validatePriceObject(priceObj, contractType) {
   const requiredFields = [
     "contract",
-    "price_type", 
+    "price_type",
     "currency",
     "start_date",
-    "price"
+    "price",
   ];
 
   // Check required fields
   for (const field of requiredFields) {
     if (!(field in priceObj)) {
-      throw new Error(`Missing required field '${field}' in ${contractType} price object`);
+      throw new Error(
+        `Missing required field '${field}' in ${contractType} price object`
+      );
     }
   }
 
   // Validate field types and values
   if (typeof priceObj.contract !== "string") {
-    throw new Error(`Invalid contract type in ${contractType}: expected string, got ${typeof priceObj.contract}`);
+    throw new Error(
+      `Invalid contract type in ${contractType}: expected string, got ${typeof priceObj.contract}`
+    );
   }
 
-  if (priceObj.price_type !== "consumption") {
-    throw new Error(`Invalid price_type in ${contractType}: expected 'consumption', got '${priceObj.price_type}'`);
+  if (!["consumption", "subscription"].includes(priceObj.price_type)) {
+    throw new Error(
+      `Invalid price_type in ${contractType}: expected 'consumption' or 'subscription', got '${priceObj.price_type}'`
+    );
   }
 
   if (priceObj.currency !== "euro") {
-    throw new Error(`Invalid currency in ${contractType}: expected 'euro', got '${priceObj.currency}'`);
+    throw new Error(
+      `Invalid currency in ${contractType}: expected 'euro', got '${priceObj.currency}'`
+    );
   }
 
   if (typeof priceObj.price !== "number" || priceObj.price < 0) {
-    throw new Error(`Invalid price in ${contractType}: expected positive number, got ${priceObj.price}`);
+    throw new Error(
+      `Invalid price in ${contractType}: expected positive number, got ${priceObj.price}`
+    );
   }
 
   // Validate date format (ISO format YYYY-MM-DD)
   const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
   if (!dateRegex.test(priceObj.start_date)) {
-    throw new Error(`Invalid start_date format in ${contractType}: expected YYYY-MM-DD, got '${priceObj.start_date}'`);
+    throw new Error(
+      `Invalid start_date format in ${contractType}: expected YYYY-MM-DD, got '${priceObj.start_date}'`
+    );
   }
 
   if (priceObj.end_date && !dateRegex.test(priceObj.end_date)) {
-    throw new Error(`Invalid end_date format in ${contractType}: expected YYYY-MM-DD or null, got '${priceObj.end_date}'`);
+    throw new Error(
+      `Invalid end_date format in ${contractType}: expected YYYY-MM-DD or null, got '${priceObj.end_date}'`
+    );
   }
 
   return true;
@@ -60,37 +74,91 @@ function validatePriceObject(priceObj, contractType) {
  * @param {string} contractType - Contract type
  */
 function validateContractSpecificRequirements(prices, contractType) {
-  for (const price of prices) {
+  // Filter consumption and subscription prices
+  const consumptionPrices = prices.filter(
+    (p) => p.price_type === "consumption"
+  );
+  const subscriptionPrices = prices.filter(
+    (p) => p.price_type === "subscription"
+  );
+
+  // EDF contracts must have subscription prices
+  const edfContracts = ["edf-base", "edf-peak-off-peak", "edf-tempo"];
+  if (edfContracts.includes(contractType) && subscriptionPrices.length === 0) {
+    throw new Error(
+      `${contractType} must have at least one subscription price`
+    );
+  }
+
+  // Validate subscription prices have correct structure (null hour_slots and day_type)
+  for (const price of subscriptionPrices) {
+    if (price.hour_slots !== null) {
+      throw new Error(
+        `Subscription price in ${contractType} should have hour_slots = null, got '${price.hour_slots}'`
+      );
+    }
+    if (price.day_type !== null) {
+      throw new Error(
+        `Subscription price in ${contractType} should have day_type = null, got '${price.day_type}'`
+      );
+    }
+    if (price.price <= 0) {
+      throw new Error(
+        `Subscription price in ${contractType} should be positive, got ${price.price}`
+      );
+    }
+  }
+
+  // Validate consumption prices based on contract type
+  for (const price of consumptionPrices) {
     switch (contractType) {
       case "edf-base":
         if (price.hour_slots !== null) {
-          throw new Error(`Base contract should have hour_slots = null, got '${price.hour_slots}'`);
+          throw new Error(
+            `Base contract consumption should have hour_slots = null, got '${price.hour_slots}'`
+          );
         }
         if (price.day_type !== null) {
-          throw new Error(`Base contract should have day_type = null, got '${price.day_type}'`);
+          throw new Error(
+            `Base contract consumption should have day_type = null, got '${price.day_type}'`
+          );
         }
         break;
 
       case "edf-peak-off-peak":
-        if (!["TO_REPLACE_PEAK", "TO_REPLACE_OFF_PEAK"].includes(price.hour_slots)) {
-          throw new Error(`Peak-off-peak contract should have hour_slots as 'TO_REPLACE_PEAK' or 'TO_REPLACE_OFF_PEAK', got '${price.hour_slots}'`);
+        if (
+          !["TO_REPLACE_PEAK", "TO_REPLACE_OFF_PEAK"].includes(price.hour_slots)
+        ) {
+          throw new Error(
+            `Peak-off-peak contract consumption should have hour_slots as 'TO_REPLACE_PEAK' or 'TO_REPLACE_OFF_PEAK', got '${price.hour_slots}'`
+          );
         }
         if (price.day_type !== null) {
-          throw new Error(`Peak-off-peak contract should have day_type = null, got '${price.day_type}'`);
+          throw new Error(
+            `Peak-off-peak contract consumption should have day_type = null, got '${price.day_type}'`
+          );
         }
         break;
 
       case "edf-tempo":
         if (!["blue", "white", "red"].includes(price.day_type)) {
-          throw new Error(`Tempo contract should have day_type as 'blue', 'white', or 'red', got '${price.day_type}'`);
+          throw new Error(
+            `Tempo contract consumption should have day_type as 'blue', 'white', or 'red', got '${price.day_type}'`
+          );
         }
-        if (typeof price.hour_slots !== "string" || price.hour_slots.length === 0) {
-          throw new Error(`Tempo contract should have hour_slots as non-empty string, got '${price.hour_slots}'`);
+        if (
+          typeof price.hour_slots !== "string" ||
+          price.hour_slots.length === 0
+        ) {
+          throw new Error(
+            `Tempo contract consumption should have hour_slots as non-empty string, got '${price.hour_slots}'`
+          );
         }
         break;
 
       default:
-        console.warn(`Unknown contract type: ${contractType}`);
+        // Other contract types: no specific validation
+        break;
     }
   }
 }
@@ -100,7 +168,7 @@ function validateContractSpecificRequirements(prices, contractType) {
  */
 function runTests() {
   console.log("🧪 Starting process.test.js");
-  console.log("=" .repeat(50));
+  console.log("=".repeat(50));
 
   try {
     // Step 1: Run the process.js script
@@ -119,7 +187,7 @@ function runTests() {
     console.log("\n📋 Step 2: Validating contracts.json structure...");
     const contractsContent = fs.readFileSync(contractsPath, "utf-8");
     let contractsData;
-    
+
     try {
       contractsData = JSON.parse(contractsContent);
     } catch (parseError) {
@@ -133,30 +201,40 @@ function runTests() {
     }
 
     const contractTypes = Object.keys(contractsData);
-    console.log(`✅ Found ${contractTypes.length} contract types: ${contractTypes.join(", ")}`);
+    console.log(
+      `✅ Found ${contractTypes.length} contract types: ${contractTypes.join(
+        ", "
+      )}`
+    );
 
     // Step 5: Validate each contract type
     console.log("\n📋 Step 3: Validating contract data structure...");
-    
+
     for (const contractType of contractTypes) {
       const contractData = contractsData[contractType];
-      
+
       if (typeof contractData !== "object" || contractData === null) {
         throw new Error(`Contract ${contractType} should be an object`);
       }
 
       const subscribedPowers = Object.keys(contractData);
-      console.log(`  📊 ${contractType}: ${subscribedPowers.length} subscribed power levels`);
+      console.log(
+        `  📊 ${contractType}: ${subscribedPowers.length} subscribed power levels`
+      );
 
       for (const power of subscribedPowers) {
         const prices = contractData[power];
-        
+
         if (!Array.isArray(prices)) {
-          throw new Error(`Subscribed power ${power} in ${contractType} should contain an array of prices`);
+          throw new Error(
+            `Subscribed power ${power} in ${contractType} should contain an array of prices`
+          );
         }
 
         if (prices.length === 0) {
-          throw new Error(`Subscribed power ${power} in ${contractType} should not be empty`);
+          throw new Error(
+            `Subscribed power ${power} in ${contractType} should not be empty`
+          );
         }
 
         // Validate each price object
@@ -164,7 +242,9 @@ function runTests() {
           try {
             validatePriceObject(prices[i], `${contractType}[${power}][${i}]`);
           } catch (error) {
-            throw new Error(`Price validation failed for ${contractType}[${power}][${i}]: ${error.message}`);
+            throw new Error(
+              `Price validation failed for ${contractType}[${power}][${i}]: ${error.message}`
+            );
           }
         }
 
@@ -178,7 +258,7 @@ function runTests() {
     // Step 6: Validate expected contract types exist
     console.log("\n📋 Step 4: Checking expected contract types...");
     const expectedContracts = ["edf-base", "edf-peak-off-peak", "edf-tempo"];
-    
+
     for (const expected of expectedContracts) {
       if (!contractTypes.includes(expected)) {
         throw new Error(`Expected contract type '${expected}' not found`);
@@ -186,32 +266,100 @@ function runTests() {
     }
     console.log("✅ All expected contract types are present");
 
-    // Step 7: Summary statistics
+    // Step 7: Validate subscription price consistency for EDF contracts
+    console.log("\n📋 Step 5: Validating subscription prices consistency...");
+    const edfContractsToValidate = [
+      "edf-base",
+      "edf-peak-off-peak",
+      "edf-tempo",
+    ];
+
+    for (const contractType of edfContractsToValidate) {
+      if (!contractsData[contractType]) continue;
+      const contractData = contractsData[contractType];
+
+      for (const power of Object.keys(contractData)) {
+        const prices = contractData[power];
+        const subscriptionPrices = prices.filter(
+          (p) => p.price_type === "subscription"
+        );
+        const consumptionPrices = prices.filter(
+          (p) => p.price_type === "consumption"
+        );
+
+        // Get unique date ranges for consumption prices
+        const consumptionDateRanges = new Set(
+          consumptionPrices.map((p) => `${p.start_date}|${p.end_date}`)
+        );
+
+        // Get unique date ranges for subscription prices
+        const subscriptionDateRanges = new Set(
+          subscriptionPrices.map((p) => `${p.start_date}|${p.end_date}`)
+        );
+
+        // Each consumption date range should have a corresponding subscription
+        for (const dateRange of consumptionDateRanges) {
+          if (!subscriptionDateRanges.has(dateRange)) {
+            throw new Error(
+              `${contractType}[${power}]: Missing subscription price for date range ${dateRange}`
+            );
+          }
+        }
+      }
+    }
+    console.log(
+      "✅ All EDF subscription prices are consistent with consumption prices"
+    );
+
+    // Step 8: Summary statistics
     console.log("\n📊 SUMMARY STATISTICS:");
-    console.log("=" .repeat(30));
-    
+    console.log("=".repeat(30));
+
     let totalPrices = 0;
+    let totalConsumption = 0;
+    let totalSubscription = 0;
+
     for (const contractType of contractTypes) {
       const contractData = contractsData[contractType];
       let contractPrices = 0;
-      
+      let contractConsumption = 0;
+      let contractSubscription = 0;
+
       for (const power of Object.keys(contractData)) {
-        contractPrices += contractData[power].length;
+        const prices = contractData[power];
+        contractPrices += prices.length;
+        contractConsumption += prices.filter(
+          (p) => p.price_type === "consumption"
+        ).length;
+        contractSubscription += prices.filter(
+          (p) => p.price_type === "subscription"
+        ).length;
       }
-      
+
       totalPrices += contractPrices;
-      console.log(`${contractType}: ${contractPrices} price entries`);
+      totalConsumption += contractConsumption;
+      totalSubscription += contractSubscription;
+      console.log(
+        `${contractType}: ${contractPrices} entries (${contractConsumption} consumption, ${contractSubscription} subscription)`
+      );
     }
-    
-    console.log(`Total: ${totalPrices} price entries across all contracts`);
+
+    console.log(
+      `Total: ${totalPrices} price entries (${totalConsumption} consumption, ${totalSubscription} subscription)`
+    );
+
+    if (totalSubscription === 0) {
+      throw new Error(
+        "No subscription prices found - subscription prices are mandatory"
+      );
+    }
 
     console.log("\n🎉 ALL TESTS PASSED!");
-    console.log("=" .repeat(50));
-
+    console.log("=".repeat(50));
   } catch (error) {
     console.error("\n❌ TEST FAILED:");
     console.error(error.message);
-    console.log("=" .repeat(50));
+    console.log("=".repeat(50));
     process.exit(1);
   }
 }

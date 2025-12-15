@@ -32,12 +32,14 @@ function processBaseOptions() {
     const dateFinIndex = headers.indexOf("DATE_FIN");
     const pSouscriteIndex = headers.indexOf("P_SOUSCRITE");
     const partVariableTtcIndex = headers.indexOf("PART_VARIABLE_TTC");
+    const partFixeTtcIndex = headers.indexOf("PART_FIXE_TTC");
 
     if (
       dateDebutIndex === -1 ||
       dateFinIndex === -1 ||
       pSouscriteIndex === -1 ||
-      partVariableTtcIndex === -1
+      partVariableTtcIndex === -1 ||
+      partFixeTtcIndex === -1
     ) {
       throw new Error("Required columns not found in CSV");
     }
@@ -56,19 +58,25 @@ function processBaseOptions() {
       const startDate = columns[dateDebutIndex];
       const endDate = columns[dateFinIndex];
       const priceStr = columns[partVariableTtcIndex];
+      const subscriptionPriceStr = columns[partFixeTtcIndex];
 
       // Skip rows with missing data
-      if (!subscribedPower || !startDate || !priceStr) continue;
+      if (!subscribedPower || !startDate || !priceStr || !subscriptionPriceStr)
+        continue;
 
       // Convert price from string to number, replace comma with dot, then multiply by 10000 for integer
       const price = Math.round(parseFloat(priceStr.replace(",", ".")) * 10000);
+      // Subscription price is yearly in euros, convert to monthly and multiply by 10000 for integer
+      const subscriptionPrice = Math.round(
+        (parseFloat(subscriptionPriceStr.replace(",", ".")) / 12) * 10000
+      );
 
       // Convert dates to ISO format
       const startDateIso = convertToIsoDate(startDate);
       const endDateIso = endDate ? convertToIsoDate(endDate) : null;
 
-      // Create price object
-      const priceObject = {
+      // Create consumption price object
+      const consumptionPriceObject = {
         contract: "base",
         price_type: "consumption",
         currency: "euro",
@@ -79,13 +87,26 @@ function processBaseOptions() {
         day_type: null, // No day type for base pricing
       };
 
+      // Create subscription price object
+      const subscriptionPriceObject = {
+        contract: "base",
+        price_type: "subscription",
+        currency: "euro",
+        start_date: startDateIso,
+        end_date: endDateIso,
+        price: subscriptionPrice,
+        hour_slots: null,
+        day_type: null,
+      };
+
       // Initialize array for this subscribed power if it doesn't exist
       if (!result[subscribedPower]) {
         result[subscribedPower] = [];
       }
 
-      // Add price object to the appropriate subscribed power group
-      result[subscribedPower].push(priceObject);
+      // Add price objects to the appropriate subscribed power group
+      result[subscribedPower].push(consumptionPriceObject);
+      result[subscribedPower].push(subscriptionPriceObject);
     }
 
     return result;

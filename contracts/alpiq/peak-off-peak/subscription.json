@@ -1,0 +1,374 @@
+{
+  "6": [
+    {
+      "contract": "peak-off-peak",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 157400,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "7": [
+    {
+      "contract": "peak-off-peak",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 171000,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "8": [
+    {
+      "contract": "peak-off-peak",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 184600,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "9": [
+    {
+      "contract": "peak-off-peak",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 198100,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "10": [
+    {
+      "contract": "peak-off-peak",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 211300,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "11": [
+    {
+      "contract": "peak-off-peak",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 224400,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "12": [
+    {
+      "contract": "peak-off-peak",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 237600,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "13": [
+    {
+      "contract": "peak-off-peak",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 250000,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "14": [
+    {
+      "contract": "peak-off-peak",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 262500,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "15": [
+    {
+      "contract": "peak-off-peak",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 274900,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "16": [
+    {
+      "contract": "peak-off-peak",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 287700,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "17": [
+    {
+      "contract": "peak-off-peak",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 300600,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "18": [
+    {
+      "contract": "peak-off-peak",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 313400,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "19": [
+    {
+      "contract": "peak-off-peak",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 326900,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "20": [
+    {
+      "contract": "peak-off-peak",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 340500,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "21": [
+    {
+      "contract": "peak-off-peak",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 354000,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "22": [
+    {
+      "contract": "peak-off-peak",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 367600,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "23": [
+    {
+      "contract": "peak-off-peak",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 381200,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "24": [
+    {
+      "contract": "peak-off-peak",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 394700,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "25": [
+    {
+      "contract": "peak-off-peak",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 407300,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "26": [
+    {
+      "contract": "peak-off-peak",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 419900,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "27": [
+    {
+      "contract": "peak-off-peak",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 432500,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "28": [
+    {
+      "contract": "peak-off-peak",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 445000,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "29": [
+    {
+      "contract": "peak-off-peak",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 457600,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "30": [
+    {
+      "contract": "peak-off-peak",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 470200,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "31": [
+    {
+      "contract": "peak-off-peak",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 482800,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "32": [
+    {
+      "contract": "peak-off-peak",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 495500,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "33": [
+    {
+      "contract": "peak-off-peak",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 508200,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "34": [
+    {
+      "contract": "peak-off-peak",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 520800,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "35": [
+    {
+      "contract": "peak-off-peak",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 533500,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "36": [
+    {
+      "contract": "peak-off-peak",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 546100,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ]
+}

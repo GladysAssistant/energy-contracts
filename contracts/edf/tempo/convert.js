@@ -62,6 +62,9 @@ function processTempoOptions() {
       "PART_VARIABLE_HPRouge_TTC"
     );
 
+    // Subscription price
+    const partFixeTtcIndex = headers.indexOf("PART_FIXE_TTC");
+
     if (
       dateDebutIndex === -1 ||
       dateFinIndex === -1 ||
@@ -71,7 +74,8 @@ function processTempoOptions() {
       partVariableHcBlancTtcIndex === -1 ||
       partVariableHpBlancTtcIndex === -1 ||
       partVariableHcRougeTtcIndex === -1 ||
-      partVariableHpRougeTtcIndex === -1
+      partVariableHpRougeTtcIndex === -1 ||
+      partFixeTtcIndex === -1
     ) {
       throw new Error("Required columns not found in CSV");
     }
@@ -97,6 +101,7 @@ function processTempoOptions() {
       const whitePeakStr = columns[partVariableHpBlancTtcIndex];
       const redOffPeakStr = columns[partVariableHcRougeTtcIndex];
       const redPeakStr = columns[partVariableHpRougeTtcIndex];
+      const subscriptionPriceStr = columns[partFixeTtcIndex];
 
       // Skip rows with missing essential data or empty price data
       if (
@@ -107,7 +112,8 @@ function processTempoOptions() {
         !whiteOffPeakStr ||
         !whitePeakStr ||
         !redOffPeakStr ||
-        !redPeakStr
+        !redPeakStr ||
+        !subscriptionPriceStr
       )
         continue;
 
@@ -129,6 +135,10 @@ function processTempoOptions() {
       );
       const redPeakPrice = Math.round(
         parseFloat(redPeakStr.replace(",", ".")) * 10000
+      );
+      // Subscription price is yearly in euros, convert to monthly and multiply by 10000 for integer
+      const subscriptionPrice = Math.round(
+        (parseFloat(subscriptionPriceStr.replace(",", ".")) / 12) * 10000
       );
 
       // Convert dates to ISO format
@@ -199,6 +209,17 @@ function processTempoOptions() {
           price: redPeakPrice,
           hour_slots: peakSlots,
           day_type: "red",
+        },
+        // Subscription price
+        {
+          contract: "edf-tempo",
+          price_type: "subscription",
+          currency: "euro",
+          start_date: startDateIso,
+          end_date: endDateIso,
+          price: subscriptionPrice,
+          hour_slots: null,
+          day_type: null,
         },
       ];
 

@@ -1,0 +1,410 @@
+{
+  "3": [
+    {
+      "contract": "base",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 117300,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "4": [
+    {
+      "contract": "base",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 129700,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "5": [
+    {
+      "contract": "base",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 142200,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "6": [
+    {
+      "contract": "base",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 154700,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "7": [
+    {
+      "contract": "base",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 167700,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "8": [
+    {
+      "contract": "base",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 180800,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "9": [
+    {
+      "contract": "base",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 193900,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "10": [
+    {
+      "contract": "base",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 207000,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "11": [
+    {
+      "contract": "base",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 220100,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "12": [
+    {
+      "contract": "base",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 233200,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "13": [
+    {
+      "contract": "base",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 245700,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "14": [
+    {
+      "contract": "base",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 258100,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "15": [
+    {
+      "contract": "base",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 270600,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "16": [
+    {
+      "contract": "base",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 282900,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "17": [
+    {
+      "contract": "base",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 295300,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "18": [
+    {
+      "contract": "base",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 307600,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "19": [
+    {
+      "contract": "base",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 321000,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "20": [
+    {
+      "contract": "base",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 334400,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "21": [
+    {
+      "contract": "base",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 347700,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "22": [
+    {
+      "contract": "base",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 361100,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "23": [
+    {
+      "contract": "base",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 374500,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "24": [
+    {
+      "contract": "base",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 387900,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "25": [
+    {
+      "contract": "base",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 400600,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "26": [
+    {
+      "contract": "base",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 413400,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "27": [
+    {
+      "contract": "base",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 426200,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "28": [
+    {
+      "contract": "base",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 438900,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "29": [
+    {
+      "contract": "base",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 451700,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "30": [
+    {
+      "contract": "base",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 464400,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "31": [
+    {
+      "contract": "base",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 477500,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "32": [
+    {
+      "contract": "base",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 490600,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "33": [
+    {
+      "contract": "base",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 503700,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "34": [
+    {
+      "contract": "base",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 516700,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "35": [
+    {
+      "contract": "base",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 529800,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "36": [
+    {
+      "contract": "base",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-11-04",
+      "end_date": "2027-11-30",
+      "price": 542900,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ]
+}

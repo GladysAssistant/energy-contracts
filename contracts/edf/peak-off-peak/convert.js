@@ -34,13 +34,15 @@ function processPeakOffPeakOptions() {
     const pSouscriteIndex = headers.indexOf("P_SOUSCRITE");
     const partVariableHcTtcIndex = headers.indexOf("PART_VARIABLE_HC_TTC"); // Off-peak
     const partVariableHpTtcIndex = headers.indexOf("PART_VARIABLE_HP_TTC"); // Peak
+    const partFixeTtcIndex = headers.indexOf("PART_FIXE_TTC");
 
     if (
       dateDebutIndex === -1 ||
       dateFinIndex === -1 ||
       pSouscriteIndex === -1 ||
       partVariableHcTtcIndex === -1 ||
-      partVariableHpTtcIndex === -1
+      partVariableHpTtcIndex === -1 ||
+      partFixeTtcIndex === -1
     ) {
       throw new Error("Required columns not found in CSV");
     }
@@ -60,9 +62,16 @@ function processPeakOffPeakOptions() {
       const endDate = columns[dateFinIndex];
       const offPeakPriceStr = columns[partVariableHcTtcIndex];
       const peakPriceStr = columns[partVariableHpTtcIndex];
+      const subscriptionPriceStr = columns[partFixeTtcIndex];
 
       // Skip rows with missing data
-      if (!subscribedPower || !startDate || !offPeakPriceStr || !peakPriceStr)
+      if (
+        !subscribedPower ||
+        !startDate ||
+        !offPeakPriceStr ||
+        !peakPriceStr ||
+        !subscriptionPriceStr
+      )
         continue;
 
       // Convert prices from string to number, replace comma with dot, then multiply by 10000 for integer
@@ -71,6 +80,10 @@ function processPeakOffPeakOptions() {
       );
       const peakPrice = Math.round(
         parseFloat(peakPriceStr.replace(",", ".")) * 10000
+      );
+      // Subscription price is yearly in euros, convert to monthly and multiply by 10000 for integer
+      const subscriptionPrice = Math.round(
+        (parseFloat(subscriptionPriceStr.replace(",", ".")) / 12) * 10000
       );
 
       // Convert dates to ISO format
@@ -101,14 +114,27 @@ function processPeakOffPeakOptions() {
         day_type: null,
       };
 
+      // Create subscription price object
+      const subscriptionPriceObject = {
+        contract: "peak-off-peak",
+        price_type: "subscription",
+        currency: "euro",
+        start_date: startDateIso,
+        end_date: endDateIso,
+        price: subscriptionPrice,
+        hour_slots: null,
+        day_type: null,
+      };
+
       // Initialize array for this subscribed power if it doesn't exist
       if (!result[subscribedPower]) {
         result[subscribedPower] = [];
       }
 
-      // Add both price objects to the appropriate subscribed power group
+      // Add all price objects to the appropriate subscribed power group
       result[subscribedPower].push(offPeakPriceObject);
       result[subscribedPower].push(peakPriceObject);
+      result[subscribedPower].push(subscriptionPriceObject);
     }
 
     return result;
