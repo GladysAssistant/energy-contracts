@@ -82,9 +82,8 @@ function validateContractSpecificRequirements(prices, contractType) {
     (p) => p.price_type === "subscription"
   );
 
-  // EDF contracts must have subscription prices
-  const edfContracts = ["edf-base", "edf-peak-off-peak", "edf-tempo"];
-  if (edfContracts.includes(contractType) && subscriptionPrices.length === 0) {
+  // All contracts must have subscription prices
+  if (subscriptionPrices.length === 0) {
     throw new Error(
       `${contractType} must have at least one subscription price`
     );
@@ -266,16 +265,10 @@ function runTests() {
     }
     console.log("✅ All expected contract types are present");
 
-    // Step 7: Validate subscription price consistency for EDF contracts
+    // Step 7: Validate subscription price consistency for all contracts
     console.log("\n📋 Step 5: Validating subscription prices consistency...");
-    const edfContractsToValidate = [
-      "edf-base",
-      "edf-peak-off-peak",
-      "edf-tempo",
-    ];
 
-    for (const contractType of edfContractsToValidate) {
-      if (!contractsData[contractType]) continue;
+    for (const contractType of contractTypes) {
       const contractData = contractsData[contractType];
 
       for (const power of Object.keys(contractData)) {
@@ -308,7 +301,7 @@ function runTests() {
       }
     }
     console.log(
-      "✅ All EDF subscription prices are consistent with consumption prices"
+      "✅ All subscription prices are consistent with consumption prices"
     );
 
     // Step 8: Summary statistics
