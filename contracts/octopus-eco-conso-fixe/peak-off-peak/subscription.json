@@ -1,0 +1,98 @@
+{
+  "6": [
+    {
+      "contract": "peak-off-peak",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2024-06-01",
+      "end_date": "2025-06-01",
+      "price": 156900,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "9": [
+    {
+      "contract": "peak-off-peak",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2024-06-01",
+      "end_date": "2025-06-01",
+      "price": 201600,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "12": [
+    {
+      "contract": "peak-off-peak",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2024-06-01",
+      "end_date": "2025-06-01",
+      "price": 242400,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "15": [
+    {
+      "contract": "peak-off-peak",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2024-06-01",
+      "end_date": "2025-06-01",
+      "price": 281100,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "18": [
+    {
+      "contract": "peak-off-peak",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2024-06-01",
+      "end_date": "2025-06-01",
+      "price": 320800,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "24": [
+    {
+      "contract": "peak-off-peak",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2024-06-01",
+      "end_date": "2025-06-01",
+      "price": 404800,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "30": [
+    {
+      "contract": "peak-off-peak",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2024-06-01",
+      "end_date": "2025-06-01",
+      "price": 482900,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "36": [
+    {
+      "contract": "peak-off-peak",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2024-06-01",
+      "end_date": "2025-06-01",
+      "price": 545700,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ]
+}

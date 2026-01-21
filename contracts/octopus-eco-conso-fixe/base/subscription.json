@@ -1,0 +1,101 @@
+{
+  "6": [
+    {
+      "contract": "base",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2024-06-01",
+      "end_date": "2025-01-14",
+      "price": 154200,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "9": [
+    {
+      "contract": "base",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2024-06-01",
+      "end_date": "2025-01-14",
+      "price": 193500,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "12": [
+    {
+      "contract": "base",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2024-06-01",
+      "end_date": "2025-01-14",
+      "price": 232800,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "15": [
+    {
+      "contract": "base",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2024-06-01",
+      "end_date": "2025-01-14",
+      "price": 270100,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "18": [
+    {
+      "contract": "base",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2024-06-01",
+      "end_date": "2025-01-14",
+      "price": 307100,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  
+  "24": [
+    {
+      "contract": "base",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2024-06-01",
+      "end_date": "2025-01-14",
+      "price": 387400,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  
+  "30": [
+    {
+      "contract": "base",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2024-06-01",
+      "end_date": "2025-01-14",
+      "price": 464000,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  
+  "36": [
+    {
+      "contract": "base",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2024-06-01",
+      "end_date": "2025-01-14",
+      "price": 550000,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ]
+}

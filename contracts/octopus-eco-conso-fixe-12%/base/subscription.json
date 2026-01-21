@@ -1,0 +1,98 @@
+{
+  "6": [
+    {
+      "contract": "base",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2026-01-15",
+      "end_date": "2028-01-15",
+      "price": 157400,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "9": [
+    {
+      "contract": "base",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2026-01-15",
+      "end_date": "2028-01-15",
+      "price": 202100,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "12": [
+    {
+      "contract": "base",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2026-01-15",
+      "end_date": "2028-01-15",
+      "price": 242800,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "15": [
+    {
+      "contract": "base",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2026-01-15",
+      "end_date": "2028-01-15",
+      "price": 281500,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "18": [
+    {
+      "contract": "base",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2026-01-15",
+      "end_date": "2028-01-15",
+      "price": 321300,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "24": [
+    {
+      "contract": "base",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2026-01-15",
+      "end_date": "2028-01-15",
+      "price": 405300,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "30": [
+    {
+      "contract": "base",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2026-01-15",
+      "end_date": "2028-01-15",
+      "price": 483400,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "36": [
+    {
+      "contract": "base",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2026-01-15",
+      "end_date": "2028-01-15",
+      "price": 546100,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ]
+}
