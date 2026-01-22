@@ -1,0 +1,22 @@
+[
+  {
+    "contract": "peak-off-peak",
+    "price_type": "consumption",
+    "currency": "euro",
+    "start_date": "2025-01-01",
+    "end_date": "2025-11-30",
+    "price": 1523,
+    "hour_slots": "TO_REPLACE_OFF_PEAK",
+    "day_type": null
+  },
+  {
+    "contract": "peak-off-peak",
+    "price_type": "consumption",
+    "currency": "euro",
+    "start_date": "2025-01-01",
+    "end_date": "2025-11-30",
+    "price": 1966,
+    "hour_slots": "TO_REPLACE_PEAK",
+    "day_type": null
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "9": [
+    {
+      "contract": "peak-off-peak",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2025-01-01",
+      "end_date": "2025-11-30",
+      "price": 168200,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ]
+}
