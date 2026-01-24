@@ -18,5 +18,25 @@
     "price": 2382,
     "hour_slots": "TO_REPLACE_PEAK",
     "day_type": null
+  },
+  {
+    "contract": "peak-off-peak",
+    "price_type": "consumption",
+    "currency": "euro",
+    "start_date": "2026-01-15",
+    "end_date": "2028-01-15",
+    "price": 1482,
+    "hour_slots": "TO_REPLACE_OFF_PEAK",
+    "day_type": null
+  },
+  {
+    "contract": "peak-off-peak",
+    "price_type": "consumption",
+    "currency": "euro",
+    "start_date": "2026-01-15",
+    "end_date": "2028-01-15",
+    "price": 1874,
+    "hour_slots": "TO_REPLACE_PEAK",
+    "day_type": null
   }
 ]
