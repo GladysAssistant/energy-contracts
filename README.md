@@ -57,11 +57,13 @@ To add a new contract type:
 5. The main process will automatically include it
 
 Folders' hierarchy to follow:
-+-- contracts
-  +-- new-provider
-    +-- new-tariff-base
-    +-- new-tariff-peak-of-peak
-    +-- new-tariff-tempo
+```
+contracts/
+└── new-provider/
+    ├── new-tariff-base/
+    ├── new-tariff-peak-off-peak/
+    └── new-tariff-tempo/
+```
 
 ## Contributing
 
