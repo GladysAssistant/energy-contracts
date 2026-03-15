@@ -57,7 +57,7 @@ To add a new contract type:
 5. The main process will automatically include it
 
 Folders' hierarchy to follow:
-```
+```text
 contracts/
 └── new-provider/
     ├── new-tariff-base/
