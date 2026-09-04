@@ -1,0 +1,22 @@
+[
+  {
+    "contract": "peak-off-peak",
+    "price_type": "consumption",
+    "currency": "euro",
+    "start_date": "2026-08-01",
+    "end_date": null,
+    "price": 1692,
+    "hour_slots": "TO_REPLACE_OFF_PEAK",
+    "day_type": null
+  },
+  {
+    "contract": "peak-off-peak",
+    "price_type": "consumption",
+    "currency": "euro",
+    "start_date": "2026-08-01",
+    "end_date": null,
+    "price": 2260,
+    "hour_slots": "TO_REPLACE_PEAK",
+    "day_type": null
+  }
+]

@@ -1,0 +1,98 @@
+{
+  "6": [
+    {
+      "contract": "peak-off-peak",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2026-08-01",
+      "end_date": null,
+      "price": 156900,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "9": [
+    {
+      "contract": "peak-off-peak",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2026-08-01",
+      "end_date": null,
+      "price": 196200,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "12": [
+    {
+      "contract": "peak-off-peak",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2026-08-01",
+      "end_date": null,
+      "price": 233900,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "15": [
+    {
+      "contract": "peak-off-peak",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2026-08-01",
+      "end_date": null,
+      "price": 269300,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "18": [
+    {
+      "contract": "peak-off-peak",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2026-08-01",
+      "end_date": null,
+      "price": 305900,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "24": [
+    {
+      "contract": "peak-off-peak",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2026-08-01",
+      "end_date": null,
+      "price": 383700,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "30": [
+    {
+      "contract": "peak-off-peak",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2026-08-01",
+      "end_date": null,
+      "price": 455200,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ],
+  "36": [
+    {
+      "contract": "peak-off-peak",
+      "price_type": "subscription",
+      "currency": "euro",
+      "start_date": "2026-08-01",
+      "end_date": null,
+      "price": 527200,
+      "hour_slots": null,
+      "day_type": null
+    }
+  ]
+}
