@@ -1,0 +1,14 @@
+{
+  "name": {
+    "en": "ÉS Tarif Bleu (regulated) – Base",
+    "fr": "ÉS Tarif Bleu (réglementé) – Base",
+    "de": "ÉS Tarif Bleu (reguliert) – Base",
+    "es": "ÉS Tarif Bleu (regulado) – Base"
+  },
+  "description": {
+    "en": "Électricité de Strasbourg regulated tariff, Base option: one kWh price at any time. The prices of each grid are applied by date.",
+    "fr": "Tarif réglementé d'Électricité de Strasbourg, option Base : un seul prix du kWh à toute heure. Les prix de chaque grille sont appliqués selon la date.",
+    "de": "Regulierter Tarif von Électricité de Strasbourg, Option Base: ein kWh-Preis zu jeder Zeit. Die Preise jeder Tabelle werden nach Datum angewendet.",
+    "es": "Tarifa regulada de Électricité de Strasbourg, opción Base: un único precio del kWh a cualquier hora. Los precios de cada tabla se aplican según la fecha."
+  }
+}
