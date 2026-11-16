@@ -1,5 +1,6 @@
 // -----------------------------------------------------------------------------
-// Builds contracts-v2.json: the catalogue in the template format of the Gladys
+// process-v2.js writes contracts-v2.json, as process.js writes contracts.json
+// (npm run build runs both): the catalogue in the template format of the Gladys
 // energy contracts (docs/specs/energy-contracts.md of Gladys, section 9.4).
 //
 // Gladys downloads contracts-v2.json instead of contracts.json when a release
@@ -19,7 +20,7 @@
 
 const fs = require("fs");
 const path = require("path");
-const { convertPriceRows } = require("./gladys/convertPriceRows");
+const { convertPriceRows } = require("./lib/gladys/convertPriceRows");
 
 const LANGUAGES = ["en", "fr", "de", "es"];
 const CURRENCY_MAP = {
@@ -237,7 +238,21 @@ function buildCatalogueV2(catalogue, folders = {}) {
   return { templates, calendars: [] };
 }
 
+/**
+ * Writes contracts-v2.json next to this file.
+ * @param {object} catalogue - The v1 catalogue (contracts.json content).
+ * @param {object} folders - Contract key -> folder of its convert.js.
+ * @returns {object} { outputPath, count }.
+ */
+function writeContractsV2(catalogue, folders) {
+  const outputPath = path.join(__dirname, "contracts-v2.json");
+  const catalogueV2 = buildCatalogueV2(catalogue, folders);
+  fs.writeFileSync(outputPath, JSON.stringify(catalogueV2, null, 2));
+  return { outputPath, count: catalogueV2.templates.length };
+}
+
 module.exports = {
+  writeContractsV2,
   buildCatalogueV2,
   buildVariantTariff,
   readMetadata,

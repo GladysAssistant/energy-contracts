@@ -198,7 +198,7 @@ function checkFixedComponentsDoNotOverlap(t, where) {
 }
 
 /**
- * Checks contracts-v2.json (lib/v2.js): one template per contract and power,
+ * Checks contracts-v2.json (process-v2.js): one template per contract and power,
  * the same keys as contracts.json, and the names of the template.json files.
  * @param {Object} contractsData - The content of contracts.json
  */
