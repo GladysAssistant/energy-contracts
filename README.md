@@ -76,7 +76,8 @@ contracts/
 `contracts-v2.json` is built from the v1 data with the translation Gladys applies to `contracts.json`
 (`lib/gladys/convertPriceRows.js`, copied from Gladys), with one fix: the subscription of the latest
 prices starts at their date, so a contract starting before them does not pay two subscriptions (Gladys
-v5.3.3 does). The keys do not change, so the contracts users already created keep their template. What
+v5.3.3 does). Where no older price applies (before the first known price, or a gap between two), the
+latest subscription applies, as the latest energy prices do. The keys do not change, so the contracts users already created keep their template. What
 v2 adds is a readable name:
 
 | Without `template.json`                       | With `template.json`                            |

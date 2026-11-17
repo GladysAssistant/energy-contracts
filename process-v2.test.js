@@ -9,30 +9,48 @@ const { readMetadata } = require("./process-v2");
 // process.js and contracts.json. `npm test` runs both.
 // -----------------------------------------------------------------------------
 
+/** The local date the day after `date` (YYYY-MM-DD). */
+function nextDay(date) {
+  const d = new Date(`${date}T00:00:00Z`);
+  d.setUTCDate(d.getUTCDate() + 1);
+  return d.toISOString().slice(0, 10);
+}
+
 /**
- * The engine adds up every fixed component whose conditions match: two
- * components of the same charge (`subscription`, `subscription-<start>`, …)
- * must never cover the same date, or the contract pays it twice.
+ * The engine adds up every fixed component whose conditions match, and the
+ * undated consumption rules price every date: each fixed charge
+ * (`subscription`, `subscription-<start>`, …) must apply on every date exactly
+ * once, or the contract pays it twice, or not at all while its energy is priced.
  */
-function checkFixedComponentsDoNotOverlap(t, where) {
+function checkFixedComponentsCoverEveryDateOnce(t, where) {
   const byCharge = {};
   for (const c of t.tariff.components.filter((c) => c.kind === "fixed")) {
     const charge = c.key.replace(/-\d{4}-\d{2}-\d{2}$/, "");
     const dates = (c.when && c.when.dates) || {};
     (byCharge[charge] = byCharge[charge] || []).push({
       key: c.key,
-      from: dates.from || "0000-00-00",
-      to: dates.to || "9999-99-99",
+      from: dates.from || "0000-01-01",
+      to: dates.to || null,
     });
   }
   for (const [charge, ranges] of Object.entries(byCharge)) {
     ranges.sort((a, b) => (a.from < b.from ? -1 : 1));
+    if (ranges[0].from > "1970-01-01") {
+      throw new Error(`${where}: no ${charge} before ${ranges[0].from}`);
+    }
     for (let i = 1; i < ranges.length; i += 1) {
-      if (ranges[i - 1].to >= ranges[i].from) {
+      const previous = ranges[i - 1];
+      if (previous.to === null || previous.to >= ranges[i].from) {
         throw new Error(
-          `${where}: "${ranges[i - 1].key}" and "${ranges[i].key}" both charge ${charge} on ${ranges[i].from}`,
+          `${where}: "${previous.key}" and "${ranges[i].key}" both charge ${charge} on ${ranges[i].from}`,
         );
       }
+      if (nextDay(previous.to) !== ranges[i].from) {
+        throw new Error(`${where}: no ${charge} from ${nextDay(previous.to)} to the day before ${ranges[i].from}`);
+      }
+    }
+    if (ranges[ranges.length - 1].to !== null) {
+      throw new Error(`${where}: no ${charge} after ${ranges[ranges.length - 1].to}`);
     }
   }
 }
@@ -84,7 +102,7 @@ function validateCatalogueV2(contractsData) {
     if (!energy || !energy.fallback) {
       throw new Error(`${where}: the consumption component needs a fallback`);
     }
-    checkFixedComponentsDoNotOverlap(t, where);
+    checkFixedComponentsCoverEveryDateOnce(t, where);
   }
 
   // Every template.json gives its name to all the powers of its contract.

@@ -8,7 +8,9 @@
 // translation Gladys applies to contracts.json today (one template per contract
 // key and subscribed power, older price ranges as dated rules), with one fix:
 // the fixed components of the latest range start at that range, so a contract
-// starting before it does not pay two subscriptions. What v2 adds:
+// starting before it does not pay two subscriptions; where no older range
+// applies (before the first price, gaps), dated copies of them apply, as the
+// latest consumption rules do. What v2 adds:
 //
 // - a readable name and description per contract, from an optional
 //   `template.json` next to its convert.js;
@@ -31,6 +33,8 @@ const CURRENCY_MAP = {
   yen: "JPY",
 };
 const MAX_NAME_LENGTH = 64;
+// Start of the span before the first known price (a `dates` condition needs a `from`).
+const EARLIEST_DATE = "1970-01-01";
 const MAX_DESCRIPTION_LENGTH = 512;
 
 /** Same mapping as Gladys (migration.fromEnergyPrice.js, toIsoCurrency). */
@@ -43,12 +47,51 @@ function toIsoCurrency(currency) {
   return /^[A-Za-z]{3}$/.test(value) ? value.toUpperCase() : "EUR";
 }
 
+/** The local date `days` days after `date` (YYYY-MM-DD). */
+function addDays(date, days) {
+  const d = new Date(`${date}T00:00:00Z`);
+  d.setUTCDate(d.getUTCDate() + days);
+  return d.toISOString().slice(0, 10);
+}
+
+/**
+ * The spans no older range covers, before the latest one: before the first
+ * known price, and every gap between two ranges. The undated consumption rules
+ * of the latest range price the energy there, so its fixed components must
+ * apply there too.
+ * @param {Array<object>} olderRanges - { start, end } of the older ranges.
+ * @param {string} latestStart - Start of the latest range.
+ * @returns {Array<object>} { from, to } inclusive.
+ */
+function uncoveredSpans(olderRanges, latestStart) {
+  const spans = [];
+  let cursor = EARLIEST_DATE;
+  const sorted = [...olderRanges].sort((a, b) => (a.start < b.start ? -1 : 1));
+  for (const range of sorted) {
+    if (range.start > cursor) {
+      spans.push({ from: cursor, to: addDays(range.start, -1) });
+    }
+    if (!range.end) {
+      return spans; // open-ended: covers everything after it
+    }
+    const next = addDays(range.end, 1);
+    if (next > cursor) {
+      cursor = next;
+    }
+  }
+  if (latestStart > cursor) {
+    spans.push({ from: cursor, to: addDays(latestStart, -1) });
+  }
+  return spans;
+}
+
 /**
  * The tariff of one contract key and one power: the latest price range gives
  * the undated rules and the fallback, the older ranges become rules and fixed
  * components scoped by a `dates` condition, placed first. Same algorithm as
  * Gladys v5.3.3 (template.catalogue.js, buildVariantTariff), except that the
- * fixed components of the latest range are dated from its start.
+ * fixed components of the latest range are dated from its start, with a
+ * dated copy over every span no older range covers.
  * @param {Array<object>} rows - Price rows of the variant.
  * @returns {object} { tariff, inputs, calendars, contractType, latestStart }.
  */
@@ -64,6 +107,7 @@ function buildVariantTariff(rows) {
     .sort((a, b) => (a.start < b.start ? 1 : -1));
   const energy = { key: "energy", kind: "consumption", rules: [] };
   const fixed = [];
+  const currentFixed = [];
   const inputs = [];
   let calendars = [];
   let contractType;
@@ -111,6 +155,7 @@ function buildVariantTariff(rows) {
         // components of the older ranges apply, and the engine adds up every
         // fixed component that matches (Gladys v5.3.3 charges both there).
         fixed.push({ ...component, when: { dates: { from: range.start } } });
+        currentFixed.push(component);
       } else {
         fixed.push({
           ...component,
@@ -120,6 +165,17 @@ function buildVariantTariff(rows) {
       }
     });
   });
+  // Where no range applies (before the first price, gaps), the latest prices
+  // apply, the energy as the subscription: one dated copy per span.
+  const spans = uncoveredSpans(ranges.slice(1), ranges[0].start);
+  const copies = spans.flatMap((dates) =>
+    currentFixed.map((component) => ({
+      ...component,
+      key: `${component.key}-${dates.from}`,
+      when: { dates },
+    })),
+  );
+  fixed.splice(currentFixed.length, 0, ...copies);
   const tariff = { tariff_version: 1, components: [energy, ...fixed] };
   if (calendars.length > 0) {
     tariff.calendars = calendars;
