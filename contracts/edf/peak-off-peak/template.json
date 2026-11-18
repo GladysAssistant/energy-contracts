@@ -1,0 +1,14 @@
+{
+  "name": {
+    "en": "EDF Tarif Bleu (regulated) – Off-peak hours",
+    "fr": "EDF Tarif Bleu (réglementé) – Heures Creuses",
+    "de": "EDF Tarif Bleu (reguliert) – Nebenzeit",
+    "es": "EDF Tarif Bleu (regulado) – Horas valle"
+  },
+  "description": {
+    "en": "EDF regulated tariff, Heures Creuses option: reduced kWh price during the 8 off-peak hours of your meter. The prices of each grid are applied by date.",
+    "fr": "Tarif réglementé d'EDF, option Heures Creuses : prix du kWh réduit pendant les 8 heures creuses de votre compteur. Les prix de chaque grille sont appliqués selon la date.",
+    "de": "Regulierter Tarif von EDF, Option Heures Creuses: günstigerer kWh-Preis während der 8 Nebenzeitstunden Ihres Zählers. Die Preise jeder Tabelle werden nach Datum angewendet.",
+    "es": "Tarifa regulada de EDF, opción Heures Creuses: precio del kWh reducido durante las 8 horas valle de su contador. Los precios de cada tabla se aplican según la fecha."
+  }
+}
