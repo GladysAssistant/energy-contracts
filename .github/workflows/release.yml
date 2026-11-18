@@ -29,14 +29,18 @@ jobs:
       - name: Run tests
         run: npm test
 
-      - name: Check if contracts.json exists
+      - name: Check that contracts.json and contracts-v2.json exist
         run: |
           if [ ! -f contracts.json ]; then
             echo "Error: contracts.json file not found"
             exit 1
           fi
-          echo "contracts.json file exists and is ready for release"
-          ls -la contracts.json
+          if [ ! -f contracts-v2.json ]; then
+            echo "Error: contracts-v2.json file not found"
+            exit 1
+          fi
+          echo "contracts.json and contracts-v2.json are ready for release"
+          ls -la contracts.json contracts-v2.json
 
       - name: Get current date
         id: date
@@ -62,9 +66,12 @@ jobs:
             **Generated on:** ${{ steps.date.outputs.date }}
             **Commit:** ${{ github.sha }}
 
-            This release contains the processed energy contract pricing data in JSON format.
+            This release contains the processed energy contract pricing data in JSON format:
+            - `contracts.json`: the price rows (format v1);
+            - `contracts-v2.json`: the same contracts as Gladys templates (format v2), with their names.
           files: |
             contracts.json
+            contracts-v2.json
           draft: false
           prerelease: false
 
@@ -72,5 +79,5 @@ jobs:
         run: |
           echo "✅ Release created successfully!"
           echo "🏷️  Tag: ${{ steps.version.outputs.version }}"
-          echo "📄 Asset: contracts.json uploaded"
+          echo "📄 Assets: contracts.json and contracts-v2.json uploaded"
           echo "🔗 Check the releases page for the download link"

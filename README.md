@@ -65,6 +65,48 @@ contracts/
     └── new-tariff-tempo/
 ```
 
+### Contract names (`template.json`, format v2)
+
+`npm run build` writes two files, both published in each release:
+
+- `contracts.json`, by `process.js`: the price rows above (format v1);
+- `contracts-v2.json`, by `process-v2.js`: the same contracts in the template format of Gladys
+  (format v2). Gladys uses it instead of `contracts.json` when the release carries it.
+
+`contracts-v2.json` is built from the v1 data with the translation Gladys applies to `contracts.json`
+(`lib/gladys/convertPriceRows.js`, copied from Gladys), with one fix: the subscription of the latest
+prices starts at their date, so a contract starting before them does not pay two subscriptions (Gladys
+v5.3.3 does). Where no older price applies (before the first known price, or a gap between two), the
+latest subscription applies, as the latest energy prices do. The keys do not change, so the contracts users already created keep their template. What
+v2 adds is a readable name:
+
+| Without `template.json`                       | With `template.json`                            |
+| --------------------------------------------- | ----------------------------------------------- |
+| `electricite-de-strasbourg-tarif-bleu-tempo 6 kVA` | `ÉS Tarif Bleu (réglementé) – Tempo – 6 kVA` |
+
+To name a contract, add a `template.json` next to its `convert.js`:
+
+```json
+{
+  "name": {
+    "en": "ÉS Tarif Bleu (regulated) – Tempo",
+    "fr": "ÉS Tarif Bleu (réglementé) – Tempo"
+  },
+  "description": {
+    "en": "One sentence on the contract.",
+    "fr": "Une phrase sur le contrat."
+  }
+}
+```
+
+- `name` is required, `en` included; `fr`, `de` and `es` are optional. 55 characters at most: the
+  subscribed power is appended (` – 6 kVA`).
+- `description` is optional, 512 characters at most per language.
+- The template `version` is the start date of the latest prices.
+
+A contract without `template.json` keeps its current name. Électricité de Strasbourg is the first
+provider named this way.
+
 ## Contributing
 
 1. Fork the repository

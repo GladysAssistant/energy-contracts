@@ -4,7 +4,7 @@
   "description": "",
   "main": "process.js",
   "scripts": {
-    "test": "node process.test.js",
+    "test": "node process.test.js && node process-v2.test.js",
     "build": "node process.js"
   },
   "author": "",

@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const { writeContractsV2 } = require("./process-v2");
 
 /**
  * Recursively finds all convert.js files in the contracts directory
@@ -48,6 +49,8 @@ function processAllContracts() {
   const convertFiles = findConvertFiles(contractsDir);
 
   const results = {};
+  // Contract key -> folder of its convert.js (where its template.json lives).
+  const folders = {};
 
   for (const filePath of convertFiles) {
     try {
@@ -61,6 +64,7 @@ function processAllContracts() {
       const data = convertFunction();
 
       results[key] = data;
+      folders[key] = path.dirname(filePath);
 
       console.log(`✓ Successfully processed ${key}`);
     } catch (error) {
@@ -68,16 +72,21 @@ function processAllContracts() {
     }
   }
 
-  return results;
+  return { results, folders };
 }
 
 // Run the processing
-const allContracts = processAllContracts();
+const { results: allContracts, folders } = processAllContracts();
 
 // Write results to contracts.json file
 const outputPath = path.join(__dirname, "contracts.json");
 fs.writeFileSync(outputPath, JSON.stringify(allContracts, null, 2));
 
+// The same contracts in the template format of Gladys (process-v2.js), with the
+// names and descriptions of the template.json files.
+const v2 = writeContractsV2(allContracts, folders);
+
 console.log('\n=== FINAL RESULTS ===');
 console.log(`✓ Contracts data written to ${outputPath}`);
 console.log(`Total contract types processed: ${Object.keys(allContracts).length}`);
+console.log(`✓ ${v2.count} templates written to ${v2.outputPath}`);
