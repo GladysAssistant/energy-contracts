@@ -1,0 +1,14 @@
+{
+  "name": {
+    "en": "EDF Tarif Bleu (regulated) – Base",
+    "fr": "EDF Tarif Bleu (réglementé) – Base",
+    "de": "EDF Tarif Bleu (reguliert) – Base",
+    "es": "EDF Tarif Bleu (regulado) – Base"
+  },
+  "description": {
+    "en": "EDF regulated tariff, Base option: one kWh price at any time. The prices of each grid are applied by date.",
+    "fr": "Tarif réglementé d'EDF, option Base : un seul prix du kWh à toute heure. Les prix de chaque grille sont appliqués selon la date.",
+    "de": "Regulierter Tarif von EDF, Option Base: ein kWh-Preis zu jeder Zeit. Die Preise jeder Tabelle werden nach Datum angewendet.",
+    "es": "Tarifa regulada de EDF, opción Base: un único precio del kWh a cualquier hora. Los precios de cada tabla se aplican según la fecha."
+  }
+}

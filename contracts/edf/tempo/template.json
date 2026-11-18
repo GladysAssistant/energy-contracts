@@ -1,0 +1,14 @@
+{
+  "name": {
+    "en": "EDF Tarif Bleu (regulated) – Tempo",
+    "fr": "EDF Tarif Bleu (réglementé) – Tempo",
+    "de": "EDF Tarif Bleu (reguliert) – Tempo",
+    "es": "EDF Tarif Bleu (regulado) – Tempo"
+  },
+  "description": {
+    "en": "EDF regulated tariff, Tempo option: six kWh prices by day colour (blue, white, red) and peak or off-peak hours. The prices of each grid are applied by date.",
+    "fr": "Tarif réglementé d'EDF, option Tempo : six prix du kWh selon la couleur du jour (bleu, blanc, rouge) et les heures pleines ou creuses. Les prix de chaque grille sont appliqués selon la date.",
+    "de": "Regulierter Tarif von EDF, Option Tempo: sechs kWh-Preise nach Tagesfarbe (blau, weiß, rot) und Haupt- oder Nebenzeit. Die Preise jeder Tabelle werden nach Datum angewendet.",
+    "es": "Tarifa regulada de EDF, opción Tempo: seis precios del kWh según el color del día (azul, blanco, rojo) y las horas punta o valle. Los precios de cada tabla se aplican según la fecha."
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": {
+    "en": "Octopus Eco-conso Fixe – Off-peak hours",
+    "fr": "Octopus Eco-conso Fixe – Heures Creuses",
+    "de": "Octopus Eco-conso Fixe – Nebenzeit",
+    "es": "Octopus Eco-conso Fixe – Horas valle"
+  },
+  "description": {
+    "en": "Octopus Energy Eco-conso Fixe offer, Heures Creuses option: reduced kWh price during the 8 off-peak hours of your meter. Fixed prices; the prices of each grid are applied by date.",
+    "fr": "Offre Eco-conso Fixe d'Octopus Energy, option Heures Creuses : prix du kWh réduit pendant les 8 heures creuses de votre compteur. Prix fixes ; les prix de chaque grille sont appliqués selon la date.",
+    "de": "Angebot Eco-conso Fixe von Octopus Energy, Option Heures Creuses: günstigerer kWh-Preis während der 8 Nebenzeitstunden Ihres Zählers. Festpreise; die Preise jeder Tabelle werden nach Datum angewendet.",
+    "es": "Oferta Eco-conso Fixe de Octopus Energy, opción Heures Creuses: precio del kWh reducido durante las 8 horas valle de su contador. Precios fijos; los precios de cada tabla se aplican según la fecha."
+  }
+}

@@ -104,14 +104,16 @@ To name a contract, add a `template.json` next to its `convert.js`:
 - `description` is optional, 512 characters at most per language.
 - The template `version` is the start date of the latest prices.
 
-A contract without `template.json` keeps its current name. Électricité de Strasbourg is the first
-provider named this way.
+A contract without `template.json` keeps its current name. Every contract of the catalogue has one:
+add one with each new contract, in the same form, `<Provider> <Offer> – <Option>`, the option being
+`Base` / `Heures Creuses` / `Tempo` in French, `Base` / `Off-peak hours` / `Tempo` in English, `Base` /
+`Nebenzeit` / `Tempo` in German and `Base` / `Horas valle` / `Tempo` in Spanish.
 
 ## Contributing
 
 1. Fork the repository
 2. Create a feature branch
-3. Make your changes
+3. Make your changes (a new contract comes with its `template.json`)
 4. Run build: `npm run build`
 5. Ensure tests pass: `npm test`
 6. Submit a pull request
